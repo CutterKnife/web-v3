@@ -243,7 +243,7 @@ export function DownloadSection() {
                             <div className="card-actions flex-col gap-2">
                                 <a
                                     href={getLinuxDownloadUrl()}
-                                    className={`btn btn-primary w-full ${
+                                    className={`btn btn-primary btn-lg w-full ${
                                         isDownloadDisabled ? "btn-disabled" : ""
                                     }`}
                                 >
@@ -314,7 +314,7 @@ export function DownloadSection() {
 
                             <div className="flex flex-col gap-4 mt-6">
                                 <Link
-                                    href="https://blog.floorp.app/release"
+                                    href="https://blog.floorp.app/categories/release/"
                                     className="btn btn-outline flex items-center gap-2"
                                 >
                                     <FileText size={18} />
