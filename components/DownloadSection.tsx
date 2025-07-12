@@ -83,6 +83,11 @@ export function DownloadSection() {
         return `https://github.com/Floorp-Projects/Floorp/releases/download/${releaseInfo?.tag_name}/floorp-win64.installer.exe`;
     };
 
+    const getWindowsStubInstallerUrl = () => {
+        if (!version) return "#";
+        return `https://github.com/Floorp-Projects/Floorp/releases/download/${releaseInfo?.tag_name}/floorp-stub.installer.exe`;
+    };
+
     const getPortableDownloadUrl = () => {
         return "https://github.com/Floorp-Projects/Floorp-Portable-v2/releases/latest/download/floorp-win64.portable.7z";
     };
@@ -94,12 +99,7 @@ export function DownloadSection() {
 
     const getLinuxDownloadUrl = () => {
         if (!version) return "#";
-        return `https://github.com/Floorp-Projects/Floorp/releases/download/${releaseInfo?.tag_name}/floorp-${version}.linux-x86_64.tar.bz2`;
-    };
-
-    const getLinuxArmDownloadUrl = () => {
-        if (!version) return "#";
-        return `https://github.com/Floorp-Projects/Floorp/releases/download/${releaseInfo?.tag_name}/floorp-${version}.linux-aarch64.tar.bz2`;
+        return `https://github.com/Floorp-Projects/Floorp/releases/download/${releaseInfo?.tag_name}/floorp-linux-amd64.tar.xz`;
     };
 
     const isDownloadDisabled = !releaseInfo || error;
@@ -178,7 +178,7 @@ export function DownloadSection() {
                             </div>
                             <div className="card-actions flex-col gap-2 w-full">
                                 <a
-                                    href={getWindowsDownloadUrl()}
+                                    href={getWindowsStubInstallerUrl()}
                                     className={`btn btn-primary btn-lg w-full ${
                                         isDownloadDisabled ? "btn-disabled" : ""
                                     }`}
@@ -186,8 +186,16 @@ export function DownloadSection() {
                                     {t("downloadPage.windowsDownload")}
                                 </a>
                                 <a
+                                    href={getWindowsDownloadUrl()}
+                                    className={`btn btn-outline btn-sm w-full ${
+                                        isDownloadDisabled ? "btn-disabled" : ""
+                                    }`}
+                                >
+                                    {t("downloadPage.windowsDownloadFull")}
+                                </a>
+                                <a
                                     href={getPortableDownloadUrl()}
-                                    className="btn btn-outline w-full"
+                                    className="btn btn-outline btn-sm w-full"
                                 >
                                     {t("downloadPage.portableVersion")}
                                 </a>
@@ -240,22 +248,14 @@ export function DownloadSection() {
                                     className="mx-auto mb-2"
                                 />
                             </div>
-                            <div className="card-actions flex-col gap-2">
+                            <div className="card-actions">
                                 <a
                                     href={getLinuxDownloadUrl()}
                                     className={`btn btn-primary btn-lg w-full ${
                                         isDownloadDisabled ? "btn-disabled" : ""
                                     }`}
                                 >
-                                    {t("downloadPage.linuxDownload")} (x86_64)
-                                </a>
-                                <a
-                                    href={getLinuxArmDownloadUrl()}
-                                    className={`btn btn-outline w-full ${
-                                        isDownloadDisabled ? "btn-disabled" : ""
-                                    }`}
-                                >
-                                    {t("downloadPage.linuxDownload")} (ARM64)
+                                    {t("downloadPage.linuxDownload")}
                                 </a>
                             </div>
                             <div className="text-sm mt-3 opacity-70">

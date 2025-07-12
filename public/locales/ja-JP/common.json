@@ -37,6 +37,8 @@
         "title": "Floorp ブラウザーをダウンロード",
         "subtitle": "基本的なデスクトッププラットフォームに対応",
         "windowsDownload": "Windows 版をダウンロード",
+        "windowsDownloadFull": "従来のインストーラー",
+        "windowsStubInstaller": "Windows 版をダウンロード",
         "macDownload": "macOS 版をダウンロード",
         "linuxDownload": "Linux 版をダウンロード",
         "portableVersion": "ポータブル版をダウンロード",

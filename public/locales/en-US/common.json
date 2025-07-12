@@ -37,6 +37,8 @@
         "title": "Download Floorp Browser",
         "subtitle": "Supports basic desktop platforms",
         "windowsDownload": "Download for Windows",
+        "windowsDownloadFull": "Legacy Installer",
+        "windowsStubInstaller": "Download for Windows",
         "macDownload": "Download for macOS",
         "linuxDownload": "Download for Linux",
         "portableVersion": "Download Portable Version",
