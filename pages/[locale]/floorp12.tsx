@@ -1,0 +1,136 @@
+import React from "react";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import type { GetStaticPaths, GetStaticProps } from "next";
+import { i18n } from "../../next-i18next.config";
+import Head from "next/head";
+import { useTranslation } from "next-i18next";
+import Image from "next/image";
+
+export default function Floorp12() {
+    const { t } = useTranslation("common");
+
+    const handleRedirectToBlog = () => {
+        window.open("https://blog.floorp.app/12.1.0", "_blank");
+    };
+
+    return (
+        <>
+            <Head>
+                <title>{t("floorp12.pageTitle")}</title>
+                <meta
+                    name="description"
+                    content={t("floorp12.description")}
+                />
+            </Head>
+            <div className="container mx-auto px-4 md:px-8 max-w-[90%] lg:max-w-[85%] xl:max-w-[75%] py-8 md:py-16">
+                <div className="flex flex-col items-center text-center">
+                    {/* Hero Section */}
+                    <div className="flex items-center justify-center mb-2">
+                        <Image
+                            src="/Floorp_Mark_12_Gradient.png"
+                            alt="Floorp 12"
+                            width={128}
+                            height={128}
+                        />
+                    </div>
+                    <h1 className="text-4xl md:text-6xl font-bold mb-6">
+                        {t("floorp12.heading")}
+                    </h1>
+                    <p className="text-xl mb-12 max-w-4xl">
+                        {t("floorp12.description")}
+                    </p>
+
+                    {/* Migration Wizard Section */}
+                    <div className="card bg-base-300 shadow-xl max-w-4xl mx-auto w-full mb-12">
+                        <div className="card-body">
+                            <div className="flex items-center mb-6 justify-center">
+                                <svg
+                                    className="w-10 h-10 text-warning mr-4"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    viewBox="0 0 24 24"
+                                >
+                                    <path
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        strokeWidth={2}
+                                        d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                                    />
+                                </svg>
+                                <h2 className="card-title text-3xl">
+                                    {t("floorp12.migrationTitle")}
+                                </h2>
+                            </div>
+                            <p className="text-lg mb-8 text-center max-w-2xl mx-auto">
+                                {t("floorp12.migrationDescription")}
+                            </p>
+                            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                                <a
+                                    href="https://docs.floorp.app/docs/features/migrate-to-v12"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="btn btn-primary btn-lg"
+                                >
+                                    <svg
+                                        className="w-6 h-6 mr-2"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        viewBox="0 0 24 24"
+                                    >
+                                        <path
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                            strokeWidth={2}
+                                            d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                                        />
+                                    </svg>
+                                    {t("floorp12.viewMigrationGuide")}
+                                </a>
+                                <button
+                                    onClick={handleRedirectToBlog}
+                                    className="btn btn-outline btn-lg"
+                                >
+                                    <svg
+                                        className="w-6 h-6 mr-2"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        viewBox="0 0 24 24"
+                                    >
+                                        <path
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                            strokeWidth={2}
+                                            d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                                        />
+                                    </svg>
+                                    {t("floorp12.viewBlogPost")}
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </>
+    );
+}
+
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+    const locale = params?.locale as string || "en-US";
+    return {
+        props: {
+            ...(await serverSideTranslations(locale, ["common"])),
+        },
+    };
+};
+
+export const getStaticPaths: GetStaticPaths = async () => {
+    const locales = i18n.locales;
+    const paths = locales.map((locale) => ({
+        params: { locale },
+    }));
+
+    return {
+        paths,
+        fallback: false,
+    };
+};
