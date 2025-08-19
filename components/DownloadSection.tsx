@@ -102,6 +102,11 @@ export function DownloadSection() {
         return `https://github.com/Floorp-Projects/Floorp/releases/download/${releaseInfo?.tag_name}/floorp-linux-amd64.tar.xz`;
     };
 
+    const getLinuxAArch64DownloadUrl = () => {
+        if (!version) return "#";
+        return `https://github.com/Floorp-Projects/Floorp/releases/download/${releaseInfo?.tag_name}/floorp-linux-aarch64.tar.xz`;
+    };
+
     const isDownloadDisabled = !releaseInfo || error;
 
     return (
@@ -248,7 +253,7 @@ export function DownloadSection() {
                                     className="mx-auto mb-2"
                                 />
                             </div>
-                            <div className="card-actions">
+                            <div className="card-actions flex-col gap-2 w-full">
                                 <a
                                     href={getLinuxDownloadUrl()}
                                     className={`btn btn-primary btn-lg w-full ${
@@ -256,6 +261,14 @@ export function DownloadSection() {
                                     }`}
                                 >
                                     {t("downloadPage.linuxDownload")}
+                                </a>
+                                <a
+                                    href={getLinuxAArch64DownloadUrl()}
+                                    className={`btn btn-outline btn-sm w-full ${
+                                        isDownloadDisabled ? "btn-disabled" : ""
+                                    }`}
+                                >
+                                    {t("downloadPage.linuxAArch64Download")}
                                 </a>
                             </div>
                             <div className="text-sm mt-3 opacity-70">
