@@ -11,7 +11,7 @@ export default function Floorp12() {
     const { t } = useTranslation("common");
 
     const handleRedirectToBlog = () => {
-        window.open("https://blog.floorp.app/12.1.0", "_blank");
+        window.open("https://blog.floorp.app/release/12.1.0", "_blank");
     };
 
     return (
