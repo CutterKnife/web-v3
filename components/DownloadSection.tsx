@@ -80,7 +80,7 @@ export function DownloadSection() {
     // Generate download URLs based on version
     const getWindowsDownloadUrl = () => {
         if (!version) return "#";
-        return `https://github.com/Floorp-Projects/Floorp/releases/download/${releaseInfo?.tag_name}/floorp-win64.installer.exe`;
+        return `https://github.com/Floorp-Projects/Floorp/releases/download/${releaseInfo?.tag_name}/floorp-windows-x86_64.installer.exe`;
     };
 
     const getWindowsStubInstallerUrl = () => {
@@ -89,7 +89,7 @@ export function DownloadSection() {
     };
 
     const getPortableDownloadUrl = () => {
-        return "https://github.com/Floorp-Projects/Floorp-Portable-v2/releases/latest/download/floorp-win64.portable.7z";
+        return "https://github.com/Floorp-Projects/Floorp-Portable-v2/releases/latest/download/floorp-windows-x86_64.portable.7z";
     };
 
     const getMacOSDownloadUrl = () => {
@@ -99,7 +99,7 @@ export function DownloadSection() {
 
     const getLinuxDownloadUrl = () => {
         if (!version) return "#";
-        return `https://github.com/Floorp-Projects/Floorp/releases/download/${releaseInfo?.tag_name}/floorp-linux-amd64.tar.xz`;
+        return `https://github.com/Floorp-Projects/Floorp/releases/download/${releaseInfo?.tag_name}/floorp-linux-x86_64.tar.xz`;
     };
 
     const getLinuxAArch64DownloadUrl = () => {
